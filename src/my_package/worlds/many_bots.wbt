@@ -2,6 +2,8 @@
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/floors/protos/CircleArena.proto"
+IMPORTABLE EXTERNPROTO "../resource/bobat.proto"
+
 WorldInfo {
 }
 Viewpoint {
@@ -13,4 +15,24 @@ TexturedBackground {
 TexturedBackgroundLight {
 }
 CircleArena{
+}
+bobat {
+    name "bobat_1"
+    translation -0.5 0 0
+}
+bobat {
+    name "bobat_2"
+    translation -0.25 0 0
+}
+bobat {
+    name "bobat_3"
+    translation 0 0 0
+}
+bobat {
+    name "bobat_4"
+    translation 0.25 0 0
+}
+bobat {
+    name "bobat_5"
+    translation 0.5 0 0
 }

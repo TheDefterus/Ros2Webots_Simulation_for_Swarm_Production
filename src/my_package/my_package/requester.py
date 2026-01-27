@@ -1,18 +1,16 @@
-from tkinter.font import names
-from tokenize import String
-
 import rclpy
 from rclpy.impl.logging_severity import LoggingSeverity
+import sys
 
 from rclpy.node import Node as RealNode
 from launch_ros.actions import Node as LaunchRosNode
 from std_msgs.msg import Int32
-import sys
 from webots_ros2_msgs.srv import SpawnNodeFromString
 from ament_index_python.packages import get_package_share_directory
 import os
 from launch import LaunchDescription
 from launch import LaunchService
+from launch.actions import ExecuteProcess
 
 from webots_ros2_driver.webots_controller import WebotsController
 
@@ -23,9 +21,10 @@ class Requester(RealNode):
         super().__init__('requester')
         self.get_logger().set_level(LoggingSeverity.DEBUG)
 
-        self.something = open(os.path.join(get_package_share_directory('my_package'), 'resource', 'Webots_robot_string.wbt')).read()[2:]
-        # self.get_logger().info(self.something)
-        self.launcher = LaunchService(noninteractive=False)
+
+        self.something = "bobat { name \"bobat-1\"}"
+
+        # self.launcher = LaunchService(argv=sys.argv[1:])
         self.counter = 0
         package_dir = get_package_share_directory('my_package')
         self.robot_description_path = os.path.join(package_dir, 'resource', 'my_robot.urdf')
@@ -63,6 +62,7 @@ class Requester(RealNode):
 
     def send_request(self, command):
         self.request.data = command
+        self.get_logger().info('Sending request... ' + self.request.data)
         self.future = self.client.call_async(self.request)
         rclpy.spin_until_future_complete(self, self.future)
         return self.future.result()
@@ -71,16 +71,22 @@ class Requester(RealNode):
         if msg.data == 1:
             self.counter+=1
             namespace = "bobat-" + str(self.counter)
+            self.get_logger().info("callback initiated")
 
 
             # self.launcher.include_launch_description(self.generate_a_launch_description(namespace))
             # self.launcher.run()
 
-            self.send_request(self.something.replace("HopefullyVariable", namespace))
+            # self.send_request(self.something)
+            # self.send_request(self.something.replace("VAR_NAME", namespace))
 
 
-            self.launcher.include_launch_description(self.generate_a_launch_description(namespace))
-            self.launcher.run()
+            # self.launcher.include_launch_description(self.generate_a_launch_description(namespace))
+            # self.launcher.run()
+
+            # os.system("ros2 launch my_package launch_worldly_bobat.py")
+
+
         return
 
 def main(args=None):
