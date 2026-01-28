@@ -1,12 +1,10 @@
 import os
 
 from launch_ros.actions import Node
-from launch import LaunchDescription, LaunchContext
+from launch import LaunchDescription
 from launch.substitutions import LaunchConfiguration
-from launch.substitutions import TextSubstitution
 from ament_index_python.packages import get_package_share_directory
 from webots_ros2_driver.webots_controller import WebotsController
-from launch.actions import LogInfo
 
 
 

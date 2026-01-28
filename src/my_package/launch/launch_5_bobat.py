@@ -13,6 +13,7 @@ def launch_setup(context):
             'bobat_namespace': bobat_name,
             }.items())
             )
+    launches.append(IncludeLaunchDescription(package_dir + "/launch/" + "many_bots_launch.py"))
     return launches
 
 def generate_launch_description():
