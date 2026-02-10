@@ -28,7 +28,10 @@ def launch_setup(context):
         parameters=[
             {'robot_description': robot_description_path},
         ],
-        remappings=[('/cmd_vel', '/' + namespace + '/cmd_vel'),
+        remappings=[('/cmd_vel', '/' + namespace + '/cmd_vel_smoothed'),
+                    ('/gps', '/' + namespace + '/gps'),
+                    ('/gps/speed', '/' + namespace + '/gps/speed'),
+                    ('/gps/speed_vector', '/' + namespace + '/gps/speed_vector'),
                     ('/left_sensor', '/' + namespace + '/left_sensor'),
                     ('/right_sensor', '/' + namespace + '/right_sensor')],
         namespace=namespace

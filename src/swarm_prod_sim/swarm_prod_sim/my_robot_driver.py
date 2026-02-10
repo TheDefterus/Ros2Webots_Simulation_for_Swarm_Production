@@ -1,5 +1,5 @@
 import rclpy
-from geometry_msgs.msg import Twist
+from geometry_msgs.msg import Twist, Pose2D
 
 HALF_DISTANCE_BETWEEN_WHEELS = 0.045
 WHEEL_RADIUS = 0.025
@@ -10,6 +10,7 @@ class MyRobotDriver:
 
         self.__left_motor = self.__robot.getDevice('left wheel motor')
         self.__right_motor = self.__robot.getDevice('right wheel motor')
+        self.__gps = self.__robot.getDevice('gps')
 
         self.__left_motor.setPosition(float('inf'))
         self.__left_motor.setVelocity(0)

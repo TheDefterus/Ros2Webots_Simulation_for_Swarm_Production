@@ -26,7 +26,7 @@ class Requester(RealNode):
 
         # self.launcher = LaunchService(argv=sys.argv[1:])
         self.counter = 0
-        package_dir = get_package_share_directory('my_package')
+        package_dir = get_package_share_directory('swarm_prod_sim')
         self.robot_description_path = os.path.join(package_dir, 'resource', 'my_robot.urdf')
 
 
@@ -51,7 +51,7 @@ class Requester(RealNode):
         )
 
         obstacle_avoider = LaunchRosNode(
-            package='my_package',
+            package='swarm_prod_sim',
             namespace=namespace,
             executable='obstacle_avoider',
         )
@@ -84,7 +84,7 @@ class Requester(RealNode):
             # self.launcher.include_launch_description(self.generate_a_launch_description(namespace))
             # self.launcher.run()
 
-            # os.system("ros2 launch my_package launch_worldly_bobat.py")
+            # os.system("ros2 launch swarm_prod_sim launch_worldly_bobat.py")
 
 
         return

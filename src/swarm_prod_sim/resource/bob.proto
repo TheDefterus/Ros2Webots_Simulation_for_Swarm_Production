@@ -1,8 +1,8 @@
 #VRML_SIM R2025a utf8
 
-PROTO bobat [
-field SFString   name "unnamed_bobat"
-field SFString   controller "<extern>"
+PROTO bob [
+field SFString   name "unnamed_bob"
+field SFString   controller "<generic>"
 field SFVec3f    translation  0 0 0
 ]
 {
@@ -75,8 +75,8 @@ Robot {
               metalness 0
             }
             geometry DEF BODY Cylinder {
-              height 0.08
-              radius 0.045
+              height 0.4
+              radius 0.225
             }
           }
         ]
@@ -96,8 +96,8 @@ Robot {
                   metalness 0
                 }
                 geometry Cylinder {
-                  height 0.004
-                  radius 0.008
+                  height 0.02
+                  radius 0.04
                 }
               }
             ]
@@ -125,6 +125,12 @@ Robot {
         ]
         numberOfRays 2
         aperture 1
+      }
+      Receiver {
+        translation 0 0.5 0
+      }
+      GPS {
+        name "gps"
       }
     ]
     boundingObject Pose {
