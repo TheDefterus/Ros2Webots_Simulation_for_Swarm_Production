@@ -4,7 +4,7 @@ from ament_index_python.packages import get_package_share_directory
 
 
 def launch_setup(context):
-    package_dir = get_package_share_directory("my_package")
+    package_dir = get_package_share_directory("swarm_prod_sim")
     number = 4
     launches = []
     launches.append(

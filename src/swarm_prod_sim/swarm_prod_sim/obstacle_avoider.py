@@ -33,14 +33,19 @@ class ObstacleAvoider(Node):
 
 
 def main(args=None):
-    rclpy.init(args=args)
-    avoider = ObstacleAvoider()
-    rclpy.spin(avoider)
-    # Destroy the node explicitly
-    # (optional - otherwise it will be done automatically
-    # when the garbage collector destroys the node object)
-    avoider.destroy_node()
-    rclpy.shutdown()
+    """
+    The main function.
+    :param args: Not used directly by the user, but used by ROS2 to configure
+    certain aspects of the Node.
+    """
+    try:
+        rclpy.init(args=args)
+        avoider = ObstacleAvoider()
+        rclpy.spin(avoider)
+    except KeyboardInterrupt:
+        pass
+    except Exception as e:
+        print(e)
 
 
 if __name__ == '__main__':

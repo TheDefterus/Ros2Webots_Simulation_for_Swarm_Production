@@ -8,7 +8,7 @@ from webots_ros2_driver.webots_launcher import WebotsLauncher
 
 
 def generate_launch_description():
-    package_dir = get_package_share_directory('my_package')
+    package_dir = get_package_share_directory('swarm_prod_sim')
     launch_dir = os.path.join(package_dir, 'launch')
 
 
@@ -22,7 +22,7 @@ def generate_launch_description():
 
 
     requester = Node(
-        package='my_package',
+        package='swarm_prod_sim',
         executable='requester',
     )
 

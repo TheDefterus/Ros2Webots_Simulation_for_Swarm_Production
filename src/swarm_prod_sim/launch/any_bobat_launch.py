@@ -10,15 +10,19 @@ from ament_index_python.packages import get_package_share_directory
 
 import rclpy
 
+
+
+
 def launch_setup(context):
-    package_dir = get_package_share_directory("my_package")
-    rclpy.init(args=[])
-    logger = rclpy.create_node("logger")
+    package_dir = get_package_share_directory("swarm_prod_sim")
+    # rclpy.init(args=[])
+    # logger = rclpy.create_node("logger_minus_1")
 
     number_config=LaunchConfiguration('number')
     number=int(number_config.perform(context))
 
-    robot_type = "bobat"
+
+    robot_type = "bobat" # LaunchConfiguration("robot_type")
     robot_name = "bobat_{robot_i}"
 
     bias = 0.25
@@ -26,7 +30,7 @@ def launch_setup(context):
     launches = []
     for i in range(number):
         bobat_name = '{robot_name}'.format(robot_name=robot_name).format(robot_i=i+1)
-        logger.get_logger().info(bobat_name)
+        # logger.get_logger().info(bobat_name)
         launches.append(
             IncludeLaunchDescription(package_dir + "/launch/" + "bobat_number_launch.py", launch_arguments={
             'bobat_namespace': bobat_name,
@@ -38,7 +42,7 @@ def launch_setup(context):
             robot_name=bobat_name,
             robot_translation=str(trans) + " 0 0",)
         robot_string = "\"data: " + robot_type + " { " + robot_to_spawn + "}\""
-        logger.get_logger().info(robot_string)
+        # logger.get_logger().info(robot_string)
         launches.append(
             ExecuteProcess(
                 name=bobat_name + "_spawner",
@@ -52,7 +56,9 @@ def launch_setup(context):
                 shell=True
             ),
         )
-        logger.get_logger().info(str(i+1) + " iteration done")
+        # logger.get_logger().info(str(i+1) + " iteration done")
+
+
     return launches
 
 def generate_launch_description():
@@ -62,6 +68,13 @@ def generate_launch_description():
             'number',
             default_value="1",
             description='number of bobats to spawn',
+        )
+    )
+    declared_arguments.append(
+        DeclareLaunchArgument(
+            'robot_type',
+            default_value="bobat",
+            description='what kinda robot? rn its only bobat',
         )
     )
     return LaunchDescription(declared_arguments + [OpaqueFunction(function=launch_setup)])

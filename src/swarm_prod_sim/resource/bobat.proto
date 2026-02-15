@@ -126,11 +126,11 @@ Robot {
         numberOfRays 2
         aperture 1
       }
-      Receiver {
-        translation 0 0.5 0
-      }
       GPS {
         name "gps"
+      }
+      Compass {
+        name "compass"
       }
     ]
     boundingObject Pose {

@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'my_package'
+package_name = 'swarm_prod_sim'
 data_files = []
 data_files.append(('share/ament_index/resource_index/packages', ['resource/' + package_name]))
 data_files.append(('share/' + package_name + '/launch', ['launch/launch_world_and_worldly.py']))
@@ -14,14 +14,17 @@ data_files.append(('share/' + package_name + '/launch', ['launch/bobat_number_la
 data_files.append(('share/' + package_name + '/launch', ['launch/launch_5_bobat.py']))
 data_files.append(('share/' + package_name + '/launch', ['launch/place_4_bob.py']))
 data_files.append(('share/' + package_name + '/launch', ['launch/empty_factory.py']))
+data_files.append(('share/' + package_name + '/launch', ['launch/any_bobat_everything_launch.py']))
 data_files.append(('share/' + package_name + '/worlds', ['worlds/many_bots.wbt']))
 data_files.append(('share/' + package_name + '/worlds', ['worlds/my_world.wbt']))
 data_files.append(('share/' + package_name + '/worlds', ['worlds/emptyish_arena.wbt']))
 data_files.append(('share/' + package_name + '/worlds', ['worlds/factory.wbt']))
-data_files.append(('share/' + package_name + '/resource', ['resource/my_robot.urdf']))
+data_files.append(('share/' + package_name + '/resource', ['resource/webots_bobat.urdf']))
+data_files.append(('share/' + package_name + '/resource', ['resource/bobat.urdf.xacro']))
 data_files.append(('share/' + package_name + '/resource', ['resource/Webots_robot_string.wbt']))
 data_files.append(('share/' + package_name + '/resource', ['resource/bobat.proto']))
 data_files.append(('share/' + package_name + '/resource', ['resource/bob.proto']))
+data_files.append(('share/' + package_name + '/resource', ['resource/bobat.rviz']))
 data_files.append(('share/' + package_name, ['package.xml']))
 
 setup(
@@ -38,9 +41,11 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'my_robot_driver = my_package.my_robot_driver:main',
-            'requester= my_package.requester:main',
-            'obstacle_avoider = my_package.obstacle_avoider:main',
+            'my_robot_driver = swarm_prod_sim.my_robot_driver:main',
+            'requester = swarm_prod_sim.requester:main',
+            'obstacle_avoider = swarm_prod_sim.obstacle_avoider:main',
+            'bobat_broadcaster = swarm_prod_sim.bobat_broadcaster:main',
+            'simple_nav = swarm_prod_sim.simple_nav:main',
         ],
     },
 )

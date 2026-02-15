@@ -27,7 +27,7 @@ class Requester(RealNode):
         # self.launcher = LaunchService(argv=sys.argv[1:])
         self.counter = 0
         package_dir = get_package_share_directory('swarm_prod_sim')
-        self.robot_description_path = os.path.join(package_dir, 'resource', 'my_robot.urdf')
+        self.robot_description_path = os.path.join(package_dir, 'resource', 'webots_bobat.urdf')
 
 
         self.client = self.create_client(SpawnNodeFromString, 'Ros2Supervisor/spawn_node_from_string')

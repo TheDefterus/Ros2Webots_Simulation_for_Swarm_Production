@@ -17,7 +17,7 @@ enum = {
     3:"6 -8 0", }
 
 def launch_setup(context):
-    package_dir = get_package_share_directory("my_package")
+    package_dir = get_package_share_directory("swarm_prod_sim")
     # rclpy.init(args=[])
     # logger = rclpy.create_node("logger")
 

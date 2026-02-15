@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(package_with_interfaces)
+project(swarm_prod_sim_interfaces)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -8,6 +8,36 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(geometry_msgs REQUIRED)
+# uncomment the following section in order to fill in
+# further dependencies manually.
+# find_package(<dependency> REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
+
+#### ROS2 Interface Directives ####
+set(interface_files
+  # Messages
+  #"msg/AmazingQuote.msg"
+  #"msg/AmazingQuoteStamped.msg"
+
+  # Services
+  #"srv/AddPoints.srv"
+
+  # Actions
+  "action/MoveStraight2D.action"
+
+)
+
+rosidl_generate_interfaces(${PROJECT_NAME}
+  ${interface_files}
+  DEPENDENCIES
+  geometry_msgs
+
+)
+
+ament_export_dependencies(
+  rosidl_default_runtime
+)
+#### ROS2 Interface Directives [END] ####
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

@@ -6,13 +6,13 @@ from ament_index_python.packages import get_package_share_directory
 from webots_ros2_driver.webots_controller import WebotsController
 
 def generate_launch_description():
-    package_dir = get_package_share_directory('my_package')
-    robot_description_path = os.path.join(package_dir, 'resource', 'my_robot.urdf')
+    package_dir = get_package_share_directory('swarm_prod_sim')
+    robot_description_path = os.path.join(package_dir, 'resource', 'webots_bobat.urdf')
     launch_dir = os.path.join(package_dir, 'launch')
     namespace="Worldly"
 
     obstacle_avoider = Node(
-        package='my_package',
+        package='swarm_prod_sim',
         namespace=namespace,
         executable='obstacle_avoider',
     )
