@@ -19,6 +19,13 @@
                 <alwaysOn>true</alwaysOn>
             </ros>
         </device>
-        <plugin type="my_package.my_robot_driver.MyRobotDriver" />
+        <device reference="compass" type="Compass">
+            <ros>
+                <topicName>/compass</topicName>
+                <alwaysOn>true</alwaysOn>
+            </ros>
+        </device>
+        <plugin type="swarm_prod_sim.my_robot_driver.MyRobotDriver" />
+
     </webots>
 </robot>
